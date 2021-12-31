@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Manage Applicants</title>
+    <link rel="stylesheet" type="text/css" th:href="@{webjars/bootstrap/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="container-fluid text-center">
+    <div><h2>Manage Applicants</h2></div>
+    <div><a class="h3" th:href="@{/applicant/new/}"> Add New</a></div>
+    <div if="${message}" class="alert-success text-center">
+        [[${message}]]
+    </div>
+    <div>
+        <table class="table table-bordered">
+            <thead class="border-dark">
+            <tr>
+                <th>Acc no</th>
+                <th>Gender</th>
+                <th>National Id</th>
+                <th>name of project</th>
+                <th>Budget</th>
+                <th>status</th>
+            </tr>
+            </thead>
+            <tbody>
+            <th:block th:each ="applicant : ${appList}">
+                <tr>
+                    <td>[[${applicant.accNo}]]</td>
+                    <td>[[${applicant.gender}]]</td>
+                    <td>[[${applicant.NationalId}]]</td>
+                    <td>[[${applicant.NameOfProject}]]</td>
+                    <td>[[${applicant.budgetOfProject}]]</td>
+                    <td>[[${applicant.status}]]</td>
+                    <td>
+                        <a class="h4 m-3" th:href="@{'/applicant/delete/' + ${applicant.accNo}}" >Delete</a>
+                        <a class="h4 m-3" th:href="@{'/applicant/edit/' + ${applicant.accNo}}">update</a>
+                    </td>
+                </tr>
+
+            </th:block>
+
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>

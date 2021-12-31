@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns: th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>[[${titlePage}]]</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/mywebapp.css}">
+</head>
+<body>
+<div class="container-fluid ">
+    <div class="text-center"><h1>[[${titlePage}]]</h1></div>
+    <form  th:action="@{/applicant/save}" method="post" th:object="${applicant}" style="max-width: 500px; margin: 0 auto;">
+        <input type="hidden" th:field="*{accNo}">
+        <div class="border border-secondary rounded p-3">
+            <div class="form-group row">
+                <label class="col-sm-4  col-form-label">Acc No</label>
+                <div class="col-sm-8">
+                    <input  type="text" th:field="*{accNo}" class="form-control" required minlength="5" maxlength="25">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4  col-form-label">Gender</label>
+                <div class="col-sm-8">
+                   <select th:field="*{gender}"  class="form-control">
+                      <option th:value="Female" th:text="Male"></option>
+                       <option th:value="Female" th:text="Female"></option>
+                   </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4  col-form-label">National Id</label>
+                <div class="col-sm-8">
+                    <input  type="text" th:field="*{nationalId}" class="form-control"required minlength="5" maxlength="45">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4  col-form-label">Name Of Project</label>
+                <div class="col-sm-8">
+                    <input  type="text" th:field="*{nameOfProject}" class="form-control" required minlength="5" maxlength="12">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label class="col-sm-4  col-form-label">Budget Of Project</label>
+                <div class="col-sm-8">
+                    <input  type="text" th:field="*{budgetOfProject}" class="form-control" required minlength="5" maxlength="12">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label class="col-sm-4  col-form-label">Province</label>
+                <div class="col-sm-8">
+                    <select th:field="*{province}"  class="form-control">
+                        <th:block th:each="prov :${provinceList}">
+                            <option th:text="${prov.provName}" th:value="${prov.provId}"></option>
+                        </th:block>
+                    </select>
+                </div>
+            </div>
+            <div class="text-center">
+
+                <button type="submit" class="btn btn-primary m-2">Save </button>
+                <button type="button" class="btn btn-secondary m-2" onclick="cancelForm()">Cancel</button>
+            </div>
+
+        </div>
+
+    </form>
+
+
+</div>
+<script type="text/javascript">
+    function cancelForm(){
+
+        window.location="[[@{/applicants}]]";
+    }
+</script>
+</body>
+</html>
