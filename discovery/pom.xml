@@ -9,10 +9,10 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.aos</groupId>
-    <artifactId>sercer-configuration</artifactId>
+    <artifactId>discovery</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>sercer-configuration</name>
-    <description>sercer-configuration</description>
+    <name>discovery</name>
+    <description>discovery</description>
     <properties>
         <java.version>11</java.version>
         <spring-cloud.version>2021.0.0</spring-cloud.version>
